@@ -1,28 +1,28 @@
 # Spacemesh-logs-management-for-Ubuntu
 go-spacemesh users can save log files by adding logging to the end of the command 
-./go-spacemesh --config ./node-config.json | tee -a ./node.log
+```./go-spacemesh --config ./node-config.json | tee -a ./node.log```
 
 By the time the log can grow so big that no application is able to open it. We will use Logrotate for automatic management of log files.
 
 In Ubuntu Logrotate is installed by default, but in case if it's not installed:
-sudo apt update
-sudo apt install logrotate -y
+```sudo apt update
+sudo apt install logrotate -y```
 
 
 Check if it works:
-logrotate --version
+```logrotate --version```
 
 
 The current version is 3.19.0
 
 First we need to create a configuration file. For that file you can select any location you like, For easy management I'm selecting ~/spacemesh folder, where I keep all go-spacemesh related files.
 
-nano /home/<user>/spacemesh/logrotate.conf
+```nano /home/<user>/spacemesh/logrotate.conf```
 
 
 Then paste in the following configuration:
 
-/home/<user>/spacemesh/*/*.log {
+```/home/<user>/spacemesh/*/*.log {
     weekly
     maxsize 20M
     missingok
@@ -31,7 +31,7 @@ Then paste in the following configuration:
     dateext
     copytruncate
     notifempty
-}
+}```
 
 
 This configuration is looking for log files in subfolders of /spacemesh. For exaple I've got folders /spacemesh/smh11, /spacemesh/smh12 etc.<br />
@@ -48,11 +48,11 @@ copytruncate - makes a copy before compressing and then truncates original file,
 notifempty - doesn't rotate the log if it's empty<br />_
 
 Next step is to create a state file, where logrotate saves information about it run:
-logrotate ~/spacemesh/logrotate.conf --state ~/spacemesh/logrotate.state
+```logrotate ~/spacemesh/logrotate.conf --state ~/spacemesh/logrotate.state```
 
 
 Check the content of created file:
-cat ~/spacemesh/logrotate.state
+```cat ~/spacemesh/logrotate.state```
 
 
 You'll see something like this:
@@ -63,7 +63,7 @@ logrotate state -- version 2
 That means logrotate succesfully recognized the file.
 
 Next step is to create a cron job
-crontab -e
+```crontab -e```
 
 (select 1)
 
@@ -79,6 +79,6 @@ crontab: installing new crontab
 Now your log rotation is set.
 Feel free to modify as you like.
 
-https://discord.com/channels/623195163510046732/1128603421021327511/1160182061404008498
+Also this instructions were publiched to [Discord](https://discord.com/channels/623195163510046732/1128603421021327511/1160182061404008498)
 
-P.S. Replace <user> with your user name
+**P.S. Replace <user> with your user name**
