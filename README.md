@@ -1,16 +1,22 @@
 # Spacemesh-logs-management-for-Ubuntu
 go-spacemesh users can save log files by adding logging to the end of the command 
-```./go-spacemesh --config ./node-config.json | tee -a ./node.log```
+```
+./go-spacemesh --config ./node-config.json | tee -a ./node.log
+```
 
 By the time the log can grow so big that no application is able to open it. We will use Logrotate for automatic management of log files.
 
 In Ubuntu Logrotate is installed by default, but in case if it's not installed:
-```sudo apt update
-sudo apt install logrotate -y```
+```
+sudo apt update
+sudo apt install logrotate -y
+```
 
 
 Check if it works:
-```logrotate --version```
+```
+logrotate --version
+```
 
 
 The current version is 3.19.0
@@ -22,7 +28,8 @@ First we need to create a configuration file. For that file you can select any l
 
 Then paste in the following configuration:
 
-```/home/<user>/spacemesh/*/*.log {
+```
+/home/<user>/spacemesh/*/*.log {
     weekly
     maxsize 20M
     missingok
@@ -31,7 +38,8 @@ Then paste in the following configuration:
     dateext
     copytruncate
     notifempty
-}```
+}
+```
 
 
 This configuration is looking for log files in subfolders of /spacemesh. For exaple I've got folders /spacemesh/smh11, /spacemesh/smh12 etc.<br />
