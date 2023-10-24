@@ -97,4 +97,3 @@ Feel free to modify as you like.
 
 This instructions were publiched to [Discord](https://discord.com/channels/623195163510046732/1128603421021327511/1160182061404008498)
 
-**P.S. Replace ***<user>*** with your user name**
