@@ -34,19 +34,19 @@ Then paste in the following configuration:
 }
 
 
-This configuration is looking for log files in subfolders of /spacemesh. For exaple I've got folders /spacemesh/smh11, /spacemesh/smh12 etc.
-You can adjust this path as you like, also you can add path to multiple nodes, for example:
-/home/<user>/spacemesh/node1/*.log ~/node10/*.log /mnt/disk/node10/*.log {
+This configuration is looking for log files in subfolders of /spacemesh. For exaple I've got folders /spacemesh/smh11, /spacemesh/smh12 etc.<br />
+You can adjust this path as you like, also you can add path to multiple nodes, for example:<br />
+/home/<user>/spacemesh/node1/*.log ~/node10/*.log /mnt/disk/node10/*.log {<br />
 
 -----------------------------------------
-weekly - log files will be rotated once a week. "daily" is also useful if you've got a lot of logs
-maxsize - log files will be rotated when the size of file reaches specified amount, in my case I set 20MB. It will ignore "weekly" if file size hits 20MB within a week
-missingok - ignores the error if log file is missing
-rotate - keeping a set amount of files before removing them
-compress - compressing rotated logs
-dateext - adding a date stamp to the name of files
-copytruncate - makes a copy before compressing and then truncates original file, prevents the errors from the node
-notifempty - doesn't rotate the log if it's empty
+weekly - log files will be rotated once a week. "daily" is also useful if you've got a lot of logs<br />
+maxsize - log files will be rotated when the size of file reaches specified amount, in my case I set 20MB. It will ignore "weekly" if file size hits 20MB within a week<br />
+missingok - ignores the error if log file is missing<br />
+rotate - keeping a set amount of files before removing them<br />
+compress - compressing rotated logs<br />
+dateext - adding a date stamp to the name of files<br />
+copytruncate - makes a copy before compressing and then truncates original file, prevents the errors from the node<br />
+notifempty - doesn't rotate the log if it's empty<br />
 -----------------------------------------
 
 Next step is to create a state file, where logrotate saves information about it run:
