@@ -56,11 +56,15 @@ copytruncate - makes a copy before compressing and then truncates original file,
 notifempty - doesn't rotate the log if it's empty<br />_
 
 Next step is to create a state file, where logrotate saves information about it run:
-```logrotate ~/spacemesh/logrotate.conf --state ~/spacemesh/logrotate.state```
+```
+logrotate ~/spacemesh/logrotate.conf --state ~/spacemesh/logrotate.state
+```
 
 
 Check the content of created file:
-```cat ~/spacemesh/logrotate.state```
+```
+cat ~/spacemesh/logrotate.state
+```
 
 
 You'll see something like this:
@@ -71,13 +75,17 @@ logrotate state -- version 2
 That means logrotate succesfully recognized the file.
 
 Next step is to create a cron job
-```crontab -e```
+```
+crontab -e
+```
 
 (select 1)
 
 we edit the current user's cron jobs. It shoud open the text editor.
 At the bottom of the file, add the following line:
+```
 0 * * * * /usr/sbin/logrotate /home/<user>/spacemesh/logrotate.conf --state /home/<user>/spacemesh/logrotate.state
+```
 
 
 This new line specifies that the cron job will be executed every hour
@@ -87,6 +95,6 @@ crontab: installing new crontab
 Now your log rotation is set.
 Feel free to modify as you like.
 
-Also this instructions were publiched to [Discord](https://discord.com/channels/623195163510046732/1128603421021327511/1160182061404008498)
+This instructions were publiched to [Discord](https://discord.com/channels/623195163510046732/1128603421021327511/1160182061404008498)
 
-**P.S. Replace <user> with your user name**
+**P.S. Replace ***<user>*** with your user name**
