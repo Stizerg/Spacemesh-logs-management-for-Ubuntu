@@ -31,9 +31,9 @@ Then paste in the following configuration:
 ```
 /home/<user>/spacemesh/*/*.log {
     weekly
-    maxsize 20M
+    maxsize 10M
     missingok
-    rotate 10
+    rotate 5
     compress
     dateext
     copytruncate
@@ -88,7 +88,7 @@ At the bottom of the file, add the following line:
 ```
 
 
-This new line specifies that the cron job will be executed every hour
+This new line specifies that the cron job will be executed every hour.
 Save and close the modified file. You will observe the following output:
 crontab: installing new crontab
 
