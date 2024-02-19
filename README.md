@@ -36,6 +36,7 @@ Then paste in the following configuration:
     rotate 5
     compress
     dateext
+    dateformat -%Y%m%d_%H:%M:%S
     copytruncate
     notifempty
 }
